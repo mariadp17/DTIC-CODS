@@ -1,0 +1,29 @@
+version: '3.9'
+
+services:
+  flask_app:
+    container_name: flask_app
+    image: dtic-teste/api_flask:1.0.0
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - SQLALCHEMY_DATABASE_URI=postgresql://postgres:marcela4463@dbFlask:5434/loja
+
+    depends_on:
+      - dbFlask
+
+  dbFlask:
+    container_name: dbFlask
+    image: postgres:12
+    ports:
+      - "5434:5432"
+    environment:
+      - POSTGRES_PASSWORD=marcela4463
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=loja
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata: {}
