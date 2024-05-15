@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:marcela4463@5432/loja'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:marcela4463@db/loja'
 db = SQLAlchemy(app)
 
 class Cliente(db.Model):
